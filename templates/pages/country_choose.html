@@ -1,0 +1,24 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block title %}Home page{% endblock title %}
+
+{% block content %}
+
+    <form method="post">
+    {% csrf_token %}
+    {{ country_form.as_p }}
+    <input type="submit" value="Submit">
+    </form>
+
+    <!-- create a list of 3 items in html aligned to the left with numbers instead of bullets -->
+    <ul style="list-style-type:decimal; text-align:left;">
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+
+
+
+
+{% endblock content %}
+

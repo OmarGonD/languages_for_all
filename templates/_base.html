@@ -1,0 +1,538 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <title>{% block title %}DjangoX{% endblock title %}</title>
+    <meta name="description" content="A framework for launching new Django projects quickly.">
+    <meta name="author" content="">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/icons/icons8-christian-67.png' %}">
+    <script src="https://unpkg.com/htmx.org@1.9.0"
+            integrity="sha384-aOxz9UdWG0yBiyrTwPeMibmaoq07/d3a96GCbb9x60f3mOt5zwkjdbcHFnKH8qls"
+            crossorigin="anonymous"></script>
+
+    {% block css %}
+        <!-- CSS Global Compulsory (Do not remove)-->
+        <link rel="stylesheet" href="{% static 'css/font-awesome/all.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/flaticon/flaticon.css' %}">
+        <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.min.css' %}">
+
+        <!-- Page CSS Implementing Plugins (Remove the plugin CSS here if site does not use that feature) -->
+        <link rel="stylesheet" href="{% static 'css/select2/select2.css' %}">
+        <link rel="stylesheet" href="{% static 'css/owl-carousel/owl.carousel.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/swiper/swiper.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/magnific-popup/magnific-popup.css' %}">
+        <link rel="stylesheet" href="{% static 'css/animate/animate.min.css' %}">
+
+        <!-- Page CSS Implementing Plugins (Remove the plugin CSS here if site does not use that feature) -->
+
+        <link rel="stylesheet" href="{% static 'css/range-slider/ion.rangeSlider.css' %}">
+
+        <!-- Template Style -->
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+
+        <body>
+
+        <!--=================================
+        Header -->
+        <header class="header header-style-02 header-sticky">
+            <nav class="navbar navbar-static-top navbar-expand-lg px-3 px-md-5 bg-dark">
+                <div class="container-fluid position-relative px-0">
+                    <button type="button" class="navbar-toggler" data-bs-toggle="collapse"
+                            data-bs-target=".navbar-collapse"><i class="fas fa-align-left"></i></button>
+                    <a class="navbar-brand" href="{% url 'home' %}">
+                        <img class="img-fluid" src="{% static 'images/icons/icons8-god-96.png' %}" alt="logo">
+                    </a>
+                    <a class="navbar-brand navbar-brand-sticky" href="{% url 'contact-form' %}">
+                        <img class="img-fluid" src="{% static 'images/icons/icons8-god-96.png' %}" alt="logo">
+                    </a>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown nav-item">
+                                <a class="nav-link" href="{% url 'contact-form' %}"
+                                   data-bs-toggle="dropdown">Dashboard<i
+                                        class="fas fa-chevron-down fa-xs"></i></a>
+                                <ul class="dropdown-menu megamenu dropdown-menu-md">
+                                    <li>
+                                        <div class="row g-0">
+                                            <div class="col-sm-6">
+                                                <h6 class="nav-title">Community</h6>
+                                                <ul class="list-unstyled mt-lg-1">
+                                                    <li><a class="dropdown-item" href="course-list.html"><span>Course List</span></a>
+                                                    </li>
+                                                    <li><a class="dropdown-item" href="course-list-map.html"><span>Course List With Map</span></a>
+                                                    </li>
+                                                    <li><a class="dropdown-item" href="course-grid.html"><span>Course Gird</span></a>
+                                                    </li>
+                                                    <li><a class="dropdown-item" href="course-grid-map.html"><span>Course Gird With Map</span></a>
+                                                    </li>
+                                                    <li><a class="dropdown-item"
+                                                           href="course-detail-style-01.html"><span>Course Detail Style 01</span></a>
+                                                    </li>
+                                                    <li><a class="dropdown-item"
+                                                           href="course-detail-style-02.html"><span>Course Detail Style 02</span></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <h6 class="nav-title">Cursos</h6>
+                                                <ul class="list-unstyled mt-lg-1">
+                                                    <li><a class="dropdown-item"
+                                                           href="course-detail-style-03.html"><span>Course Detail Style 03</span></a>
+                                                    </li>
+                                                    <li><a class="dropdown-item" href="membership-levels.html"><span>Membership Levels</span></a>
+                                                    </li>
+                                                    <li><a class="dropdown-item" href="events.html"><span>Events</span></a>
+                                                    </li>
+                                                    <li><a class="dropdown-item" href="event-detail.html"><span>Event Detail</span></a>
+                                                    </li>
+                                                    <li><a class="dropdown-item"
+                                                           href="teachers.html"><span>Teachers</span></a></li>
+                                                    <li><a class="dropdown-item" href="teacher-detail.html"><span>Teacher Detail</span></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown nav-item">
+                                <a class="nav-link" href="javascript:void(0)" data-bs-toggle="dropdown">Community<i
+                                        class="fas fa-chevron-down fa-xs"></i></a>
+                                <ul class="dropdown-menu megamenu dropdown-menu-lg">
+                                    <li>
+                                        <div class="row g-0">
+                                            <div class="col-sm-6 col-md-4">
+                                                <h6 class="nav-title">Basic Pages</h6>
+                                                <ul class="list-unstyled mt-lg-1">
+                                                    <li><a class="dropdown-item"
+                                                           href="about-us.html"><span>About us</span></a></li>
+                                                    <li class="active"><a class="dropdown-item"
+                                                                          href="contact-us.html"><span>Contact us</span></a>
+                                                    </li>
+                                                    <li><a class="dropdown-item"
+                                                           href="gallery.html"><span>Gallery</span></a></li>
+                                                    <li><a class="dropdown-item"
+                                                           href="login.html"><span>login</span></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-sm-6 col-md-4">
+                                                <h6 class="nav-title">Information Pages</h6>
+                                                <ul class="list-unstyled mt-lg-1">
+                                                    <li><a class="dropdown-item" href="privacy-policy.html"><span>Privacy policy</span></a>
+                                                    </li>
+                                                    <li><a class="dropdown-item" href="terms-and-conditions.html"><span>Terms & conditions</span></a>
+                                                    </li>
+                                                    <li><a class="dropdown-item" href="faqs.html"><span>FAQs</span></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-sm-6 col-md-4">
+                                                <h6 class="nav-title">Extra Pages</h6>
+                                                <ul class="list-unstyled mt-lg-1">
+                                                    <li><a class="dropdown-item"
+                                                           href="error-404.html"><span>404 error</span></a></li>
+                                                    <li><a class="dropdown-item" href="coming-soon.html"><span>Coming soon</span></a>
+                                                    </li>
+                                                    <li><a class="dropdown-item" href="maintenance.html"><span>Maintenance</span></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown nav-item">
+                                <a class="nav-link" href="javascript:void(0)" data-bs-toggle="dropdown">Cursos<i
+                                        class="fas fa-chevron-down fa-xs"></i></a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item"
+                                           href="classic-full-width.html"><span>Classic Full width</span></a></li>
+                                    <li><a class="dropdown-item" href="classic-left-sidebar.html"><span>Classic Left Sidebar</span></a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="blog-single.html"><span>Blog single</span></a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown"
+                                   aria-haspopup="true" aria-expanded="false">Shop<i
+                                        class="fas fa-chevron-down fa-xs"></i></a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="shop.html"><span>Shop</span></a></li>
+                                    <li><a class="dropdown-item" href="cart.html"><span>Cart</span></a></li>
+                                    <li><a class="dropdown-item" href="checkout.html"><span>Checkout</span></a></li>
+                                    <li><a class="dropdown-item" href="shop-single.html"><span>Shop single</span></a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item active"><a class="nav-link" href="{% url 'contact-form' %}">Contact
+                                us</a></li>
+                        </ul>
+                    </div>
+                    <div class="woo-action">
+                        <div class="woo-action">
+                            <ul class="list-unstyled">
+                                {% if user.is_authenticated %}
+                                    <li class="dropdown nav-item">
+                                        <a class="nav-link" href="javascript:void(0)"
+                                           data-bs-toggle="dropdown">Hello, {{ user.username }}<img src="{{ user.photo.url}}" width="20px" height="20px"></a>
+                                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <li><a class="dropdown-item" href="classic-full-width.html"><span><i
+                                                    class="fa fa-duotone fa-address-card"></i></span>Mi cuenta</a></li>
+                                            <li><a class="dropdown-item" href="{% url 'dashboard:dashboard_view' %}"><span><i
+                                                    class="fas fa-columns"></i></span>Dashboard</a></li>
+                                            <li><a class="dropdown-item" href="blog-single.html"><span><i
+                                                    class="far fa-credit-card"></i>Carrito</span></a></li>
+                                            <li><a class="dropdown-item" href="{% url 'accounts:logout' %}"><span><i
+                                                    class="fas fa-sign-out-alt"></i>Salir</span></a></li>
+                                        </ul>
+                                    </li>
+                                    <i class="fa-regular fa-bed"></i>
+                                {% else %}
+                                    <p>Hola</p>
+                                    <li class="user"><a data-bs-toggle="" data-bs-target=""
+                                                        hx-get="{% url 'accounts:login' %}" hx-target="#dialog">Hello
+                                        sign in<i class="fa fa-user ps-2 text-primary"></i></a></li>
+                                    <li class=""><a data-bs-toggle="" data-bs-target=""
+                                                    href="{% url 'accounts:register' %}">Regístrate<i
+                                            class="fa fa-user ps-2 text-primary"></i></a></li>
+                                {% endif %}
+                                <li class="cart dropdown">
+                                    <button class="dropdown-toggle" type="button" id="dropdownMenuButton"
+                                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span
+                                            class="cart-icon"><i class="fas fa-shopping-cart"></i></span></button>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                                        <ul class="cart-list ps-0">
+                                            <li class="d-flex">
+                                                <a class="remove-item" href="#"><i class="fas fa-times text-danger"></i></a>
+                                                <img class="img-fluid me-3" src="images/shop/01.jpg" alt="">
+                                                <div class="cart-info">
+                                                    <a href="#">Landscape Visitors Book - 122 Pages, A Design, A4</a>
+                                                    <span class="d-block">1 x 12.49</span>
+                                                </div>
+                                            </li>
+                                            <li class="d-flex">
+                                                <a class="remove-item" href="#"><i class="fas fa-times text-danger"></i></a>
+                                                <img class="img-fluid me-3" src="images/shop/02.jpg" alt="">
+                                                <div class="cart-info">
+                                                    <a href="#">Leather Visitors Notebook True-Ally A4 Faux</a>
+                                                    <span class="d-block">1 x 28.72</span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <div class="cart-footer">
+                                            <div class="d-flex mb-3">
+                                                <b class="me-auto text-dark">Subtotal:</b>
+                                                <span>$41.21</span>
+                                            </div>
+                                            <div class="d-inline-block d-sm-flex">
+                                                <a class="btn btn-sm btn-primary text-white me-2 px-4" href="#">View
+                                                    cart</a>
+                                                <a class="btn btn-sm btn-dark text-white ms-0 mt-1 mt-sm-0 ms-sm-2 px-4"
+                                                   href="#">Checkout</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+            </nav>
+        </header>
+        <!--=================================
+        Header -->
+
+        <!--=================================
+        <!- Modal login -->
+        <div class="modal login fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
+             aria-hidden="true">
+            <div id="dialog" class="modal-dialog modal-dialog-centered" hx-target="this" role="document">
+
+            </div>
+        </div>
+        <!--=================================
+        Modal login -->
+
+
+    {% endblock %}
+    <style>
+        .row.row-1 {
+            background-color: #f8f9fa;
+        }
+
+        .row.row-2 {
+            background-color: #e9ecef;
+        }
+
+        .row.row-3 {
+            background-color: #dee2e6;
+        }
+
+    </style>
+
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js'></script>
+    <script type='text/javascript'
+            src='https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js'></script>
+    </head>
+
+    <body hx-trigger="user_logged_in from:body" hx-get="{% url 'home' %}">
+
+
+    <div class="container-fluid px-0">
+        {% block content %}
+
+        {% endblock content %}
+    </div>
+
+    <!-- Footer -->
+    <!-- Footer -->
+    <footer class="bg-dark text-center text-white">
+        <!-- Grid container -->
+        <div class="container p-4">
+            <!-- Section: Social media -->
+            <section class="mb-4">
+                <!-- Facebook -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+                ><i class="fab fa-facebook-f"></i
+                ></a>
+
+                <!-- Twitter -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+                ><i class="fab fa-twitter"></i
+                ></a>
+
+                <!-- Google -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+                ><i class="fab fa-google"></i
+                ></a>
+
+                <!-- Instagram -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+                ><i class="fab fa-instagram"></i
+                ></a>
+
+                <!-- Linkedin -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+                ><i class="fab fa-linkedin-in"></i
+                ></a>
+
+                <!-- Github -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+                ><i class="fab fa-github"></i
+                ></a>
+            </section>
+            <!-- Section: Social media -->
+
+            <!-- Section: Form -->
+            <section class="">
+                <form action="">
+                    <!--Grid row-->
+                    <div class="row d-flex justify-content-center">
+                        <!--Grid column-->
+                        <div class="col-auto">
+                            <p class="pt-2">
+                                <strong>Sign up for our newsletter</strong>
+                            </p>
+                        </div>
+                        <!--Grid column-->
+
+                        <!--Grid column-->
+                        <div class="col-md-5 col-12">
+                            <!-- Email input -->
+                            <div class="form-outline form-white mb-4">
+                                <input type="email" id="form5Example21" class="form-control"/>
+                                <label class="form-label" for="form5Example21">Email address</label>
+                            </div>
+                        </div>
+                        <!--Grid column-->
+
+                        <!--Grid column-->
+                        <div class="col-auto">
+                            <!-- Submit button -->
+                            <button type="submit" class="btn btn-outline-light mb-4">
+                                Subscribe
+                            </button>
+                        </div>
+                        <!--Grid column-->
+                    </div>
+                    <!--Grid row-->
+                </form>
+            </section>
+            <!-- Section: Form -->
+
+            <!-- Section: Text -->
+            <section class="mb-4">
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt distinctio earum
+                    repellat quaerat voluptatibus placeat nam, commodi optio pariatur est quia magnam
+                    eum harum corrupti dicta, aliquam sequi voluptate quas.
+                </p>
+            </section>
+            <!-- Section: Text -->
+
+            <!-- Section: Links -->
+            <section class="">
+                <!--Grid row-->
+                <div class="row">
+                    <!--Grid column-->
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                        <h5 class="text-uppercase">Links</h5>
+
+                        <ul class="list-unstyled mb-0">
+                            <li>
+                                <a href="#!" class="text-white">Link 1</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">Link 2</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">Link 3</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">Link 4</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                        <h5 class="text-uppercase">Links</h5>
+
+                        <ul class="list-unstyled mb-0">
+                            <li>
+                                <a href="#!" class="text-white">Link 1</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">Link 2</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">Link 3</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">Link 4</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                        <h5 class="text-uppercase">Links</h5>
+
+                        <ul class="list-unstyled mb-0">
+                            <li>
+                                <a href="#!" class="text-white">Link 1</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">Link 2</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">Link 3</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">Link 4</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                        <h5 class="text-uppercase">Links</h5>
+
+                        <ul class="list-unstyled mb-0">
+                            <li>
+                                <a href="#!" class="text-white">Link 1</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">Link 2</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">Link 3</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">Link 4</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--Grid column-->
+                </div>
+                <!--Grid row-->
+            </section>
+            <!-- Section: Links -->
+        </div>
+        <!-- Grid container -->
+
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2020 Copyright:
+            <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+
+    {% block javascript %}
+        <!-- Bootstrap JavaScript -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+                crossorigin="anonymous"></script>
+
+        <!-- JS Global Compulsory (Do not remove)-->
+        <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+        <script src="{% static 'js/popper/popper.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
+
+
+        <!-- Page JS Implementing Plugins (Remove the plugin script here if site does not use that feature)-->
+        <script src="{% static 'js/jquery.appear.js' %}"></script>
+        <script src="{% static 'js/select2/select2.full.js' %}"></script>
+        <script src="{% static 'js/owl-carousel/owl.carousel.min.js' %}"></script>
+        <script src="{% static 'js/swiper/swiper.min.js' %}"></script>
+        <script src="{% static 'js/shuffle/shuffle.min.js' %}"></script>
+        <script src="{% static 'js/jarallax/jarallax.min.js' %}"></script>
+        <script src="{% static 'js/magnific-popup/jquery.magnific-popup.min.js' %}"></script>
+        <script src="{% static 'js/swiperanimation/SwiperAnimation.min.js' %}"></script>
+        <script src="{% static 'js/countdown/jquery.downCount.js' %}"></script>
+        <script src="{% static 'js/counter/jquery.countTo.js' %}"></script>
+
+
+        <!-- Template Scripts (Do not remove)-->
+        <script src="{% static 'js/custom.js' %}"></script>
+
+        <script>
+            const modal = new bootstrap.Modal(document.getElementById("loginModal"))
+
+            htmx.on("htmx:afterSwap", (e) => {
+                // Response targeting #dialog => show the modal
+                if (e.detail.target.id == "dialog") {
+                    modal.show()
+                }
+            })
+
+
+            htmx.on("htmx:beforeSwap", (e) => {
+                // Empty response targeting #dialog => hide the modal
+                if (e.detail.target.id == "dialog" && !e.detail.xhr.response) {
+                    modal.hide()
+                    e.detail.shouldSwap = false
+                }
+            })
+
+            htmx.on("hidden.bs.modal", () => {
+                document.getElementById("dialog").innerHTML = ""
+            })
+        </script>
+
+
+    {% endblock javascript %}
+
+    </body>
+
+</html>

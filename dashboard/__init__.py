@@ -1,0 +1,1 @@
+""" El dashboard es la app para manejar los cursos que el usuario ha comprado, su avance, sus notas, y mensajes con el profesor"""

@@ -1,0 +1,230 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block title %}Home page{% endblock title %}
+
+{% block content %}
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        th {
+            background-color: lightgray;
+            border-bottom: 3px solid darkgray;
+        }
+
+        td, th {
+            border: 1px solid black;
+            padding: 8px;
+        }
+
+        .accordion-header {
+            border: 1px solid lightblue;
+        }
+
+        .form-field {
+            width: 100%;
+            height: 50px;
+            background-color: #E8EDE7;
+        }
+
+        .form-field:focus {
+            width: 100%;
+            background-color: #E8EDE7;
+        }
+
+        .alert-box {
+            background-color: #E8EDE7;
+            padding: 4.3em;
+            border-top: solid 0.4em;
+            border-color: #378BA4;
+        }
+        .alert-box-text {
+            font-weight: 100;
+            line-height: 1.7em;
+        }
+    </style>
+
+    <div class="row">
+        <div class="col-12 m-5">
+            <div class="alert-box">
+                <h3 class="alert-box-text">Modalidad online (antes no presencial)</h3>
+                    <p class="alert-box-text">Sesiones de videoconferencia en tiempo real con un docente que guiará y facilitará tu aprendizaje de
+                    manera activa y dinámica con tus compañeros de clase.</p>
+                <p class="alert-box-text">Algunas de las clases contarán con temática cristiana, serán dictadas por pastores invitados de diferentes partes del mundo, y se escucharán canción cristianas en inglés.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+            <div class="accordion m-5" id="accordionExample">
+                <div class="accordion-item mb-5">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Requisitos
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                         data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <strong>Ser mayor de 10 años y contar con una computadora (o laptop) y conexión a
+                                internet.</strong> Debido a que las clases serán online, el estudiante necesita contar
+                            con una computadora para unirse. En su defecto, puede el estudiante podrá unirse desde un
+                            dispositivo móvil (celular). <code>.accordion-body</code>, though the transition does limit
+                            overflow.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item mb-5">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Características y disctado del curso
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                         data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <strong>¿Cómo será el dictado de clases bajo esta modalidad?</strong> Deberás conectarte con
+                            tu profesor y compañeros a través de la Plataforma de Videoconferencia Zoom, en el horario y
+                            frecuencia de clase que elegiste para el presente ciclo. En esta modalidad, el docente te
+                            acompañará siempre en tiempo real, durante los días y horario de clases, facilitando tu
+                            aprendizaje. Por ello, ¡El logro de tus metas no se detiene!
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item mb-5">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Niveles, ciclos y horarios
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                         data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>a</th>
+                                    <th>b</th>
+                                    <th>c</th>
+                                    <th>d</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>row 1, column 1</td>
+                                    <td>row 1, column 2</td>
+                                    <td>row 1, column 3</td>
+                                    <td>row 1, column 4</td>
+                                </tr>
+                                <tr>
+                                    <td>row 2, column 1</td>
+                                    <td>row 2, column 2</td>
+                                    <td>row 2, column 3</td>
+                                    <td>row 2, column 4</td>
+                                </tr>
+                                <tr>
+                                    <td>row 3, column 1</td>
+                                    <td>row 3, column 2</td>
+                                    <td>row 3, column 3</td>
+                                    <td>row 3, column 4</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- YOU DID NOT CLOSE THE DIV .col-6 HERE -->
+        <div class="col-6">
+            <!--=================================
+          Contact Us -->
+            <section class="space-ptb">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <h2>Contáctanos</h2>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-12">
+                            {% load crispy_forms_tags %}
+
+                            <form method="post">
+                                {% csrf_token %}
+                                {% crispy contact_form %}
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--=================================
+          Contact Us -->
+        </div>
+    </div>
+    </div>
+    <!--=================================
+    Additional Info -->
+    <section class="space-pb">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 text-center">
+                    <div class="section-title">
+                        <h2>Additional Contact Info</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="text-center px-0 px-sm-3 mb-4 mb-md-0">
+                        <i class="flaticon-support fa-3x text-primary"></i>
+                        <h4 class="my-4">Our Support Center</h4>
+                        <p class="mb-0">For those of you who are serious about having more, doing more, giving more and
+                            being more, success is achievable.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center px-0 px-sm-3 mb-4 mb-md-0">
+                        <i class="flaticon-video fa-3x text-primary"></i>
+                        <h4 class="my-4">Chat To Us Online</h4>
+                        <p class="mb-0">The first thing to remember about success is that it is a process – nothing
+                            more, nothing less. There is really no magic.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center px-0 px-sm-3">
+                        <i class="flaticon-clock-1 fa-3x text-primary"></i>
+                        <h4 class="my-4">Education Hours</h4>
+                        <p class="mb-0">Monday to Friday : 10 am – 7 pm.<br> Saturday : 9 am – 1 pm. <br>Sunday : Closed
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--=================================
+    Additional Info -->
+
+    <!--=================================
+    map -->
+    <section>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 p-0">
+                    <iframe class="w-100 border-0"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8402891185456!2d144.95373631584474!3d-37.81720974201458!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d4c2b349649%3A0xb6899234e561db11!2sEnvato!5e0!3m2!1sen!2sin!4v1598418458630!5m2!1sen!2sin"
+                            style="border:0; width: 100%; height: 500px;" allowfullscreen=""></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--=================================
+    map -->
+
+
+{% endblock content %}
