@@ -79,8 +79,15 @@ def verify_email(request, uidb64, token):
         messages.success(request, 'Your email address has been verified successfully.')
         return redirect('home')
     else:
+        print("Email verification failed")
+        if user is None:
+            print("### User is none ###")
         messages.error(request, 'The verification link is invalid or has expired.')
-        return redirect('login')
+
+        return render(request=request, template_name="account/email/email_verification_failed.html")
+
+
+###
 
 
 ###
