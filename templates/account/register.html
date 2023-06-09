@@ -142,7 +142,7 @@
     Register -->
     <form method="post" enctype="multipart/form-data">
       {% csrf_token %}
-      {{ form|crispy }}
+      {{ registration_form|crispy }}
       <input type="submit" value="Submit">
     </form>
       <!--=================================

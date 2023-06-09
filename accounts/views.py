@@ -20,7 +20,7 @@ from django.utils.text import slugify
 from .forms import CustomUserCreationForm, LoginForm
 from users_type.models import CustomUser
 from .tokens import account_activation_token
-
+from django.db import IntegrityError
 
 ###
 
@@ -39,12 +39,22 @@ def register_view(request):
         if form.is_valid():
             user = form.save(commit=False)
             print(user.first_name, "#", user.last_name, "#", user.email)
-            username = slugify(user.email.split('@')[0])  # generate a unique username based on the email
+            username = form.cleaned_data["username"]  # generate a unique username based on the email
             user.username = username
             user.set_password(form.cleaned_data["password1"])
-            user.save()
+            try:
+                user.save()
+            except IntegrityError as e:
+                if 'unique constraint failed: users_type_customuser.username' in str(e.args).lower():
+                    messages.error(request, 'This username is already in use.')
+                    return render(request, 'account/register.html', {'registration_form': form})
+                else:
+                    raise e  # Not the unique error we were expecting
             ### User needs to verify email ###
+            #user.refresh_from_db()
             uidb64 = urlsafe_base64_encode(force_bytes(user.pk))
+            print(uidb64)
+            print(force_str(urlsafe_base64_decode(uidb64)))
             token = account_activation_token.make_token(user)
             verification_link = request.build_absolute_uri('/') + f'accounts/verify-email/{uidb64}/{token}/'
             from_email = 'oma.gonzales@gmail.com'
@@ -55,7 +65,7 @@ def register_view(request):
             return redirect('accounts:email_user_needs_to_verify_email')
     else:
         form = CustomUserCreationForm()
-    return render(request, 'account/register.html', {'form': form})
+    return render(request, 'account/register.html', {'registration_form': form})
 
 
 def email_user_needs_to_verify_email(request):
@@ -66,12 +76,18 @@ def email_user_needs_to_verify_email(request):
 
 
 def verify_email(request, uidb64, token):
+    print('### verification ###')
+    print(force_str(urlsafe_base64_decode(uidb64)))
+    print(urlsafe_base64_decode(uidb64))
     try:
         uid = force_str(urlsafe_base64_decode(uidb64))
         user = CustomUser.objects.get(pk=uid)
-    except(TypeError, ValueError, OverflowError, User.DoesNotExist):
+    except Exception as e:
+        print(e)
+    # except(TypeError, ValueError, OverflowError, User.DoesNotExist):
         user = None
-
+    print(user)
+    print(account_activation_token.check_token(user, token))
     if user is not None and account_activation_token.check_token(user, token):
         user.is_email_verified = True
         user.save()

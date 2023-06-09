@@ -28,28 +28,6 @@ class ContactFormView(FormView):
         return context
 
 
-# class HomePageView(FormView):
-#     template_name = 'pages/home.html'
-#     form_class = CountryForm
-#     success_url = '.'
-#
-#     def get_context_data(self, **kwargs):
-#         context = super(HomePageView, self).get_context_data(**kwargs)
-#         #context["country_form"] = "this is a new context var"
-#         return context
-#
-#     def form_valid(self, form):
-#         # This method is called when valid form data has been POSTed.
-#         # It should return an HttpResponse.
-#         #form.send_email()
-#         #print "form is valid"
-#         return super(HomePageView, self).form_valid(form)
-#
-
-
-
-# class HomePageView(TemplateView):
-#     template_name = "pages/home.html"
 
 class CoursesListView(TemplateView):
     template_name = "pages/course-list.html"
@@ -80,4 +58,5 @@ class ContactPageView(TemplateView):
 
 
 
-
+class TripPageView(TemplateView):
+    template_name = "pages/trip.html"

@@ -1,17 +1,16 @@
 import os
 from pathlib import Path
-
-
+from decouple import config, Csv
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#std:setting-SECRET_KEY
-SECRET_KEY = "django-insecure-0peo@#x9jur3!h$ryje!$879xww8y1y66jx!%*#ymhg&jkozs2"
+SECRET_KEY = config("SECRET_KEY")
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#debug
-DEBUG = True
+DEBUG = config('DEBUG', default=True, cast=bool)
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
 ALLOWED_HOSTS = ["localhost", "0.0.0.0", "127.0.0.1"]
@@ -36,6 +35,7 @@ INSTALLED_APPS = [
     # Local
     "accounts",
     "pages",
+    "courses",
     "users_type",
     "django_countries",
     "django_htmx",
@@ -79,6 +79,8 @@ TEMPLATES = [
     },
 ]
 
+
+
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 DATABASES = {
     "default": {
@@ -118,7 +120,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # https://docs.djangoproject.com/en/dev/topics/i18n/
 # https://docs.djangoproject.com/en/dev/ref/settings/#language-code
-LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = "es-ES"
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#time-zone
 TIME_ZONE = "UTC"
@@ -231,7 +233,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'oma.gonzales@gmail.com'
-EMAIL_HOST_PASSWORD = 'brovnnrwmhmhpnsm'
+EMAIL_HOST_PASSWORD = config('GMAIL_APP_PASWORD')
 EMAIL_PORT = 587
 
 

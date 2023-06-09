@@ -9,6 +9,5 @@ from django.utils.http import urlsafe_base64_encode
 from django.utils.text import slugify
 
 
-
 def dashboard_view(request):
     return render(request, "dashboard/dashboard.html")

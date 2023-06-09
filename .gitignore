@@ -12,3 +12,4 @@ db.sqlite3_old
 media
 
 .venv
+.env

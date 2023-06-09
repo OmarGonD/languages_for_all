@@ -1,18 +1,20 @@
-<form hx-post="{{ request.path }}" class="modal-content" enctype="multipart/form-data">
+<form hx-post="{{ request.path }}" class="modal-content p-4" enctype="multipart/form-data">
 <div class="modal-header">
-    <h5 class="modal-title">New LoginForm</h5>
+    <h5 class="modal-title">Ingresa tu usuario y clave</h5>
   </div>
     {% csrf_token %}
+
     {{ login_form.as_p }}
     {% if login_form.errors %}
-        <ul>
+        <ol class="">
             {% for field_errors in login_form.errors.values %}
                 {% for error in field_errors %}
-                    <li>{{ error }}</li>
+                    <li class="text-danger"><strong>{{ error|escape }}</strong></li>
                 {% endfor %}
             {% endfor %}
-        </ul>
+        </ol>
     {% endif %}
+
 <div class="modal-footer">
     <button type="submit" class="btn btn-primary">Ingresar</button>
   </div>
